@@ -3,12 +3,15 @@ import HomePage from './Pages/HomePage'
 import CollectionPage from './Pages/CollectionPage'
 import Navbar from './Components/Navbar'
 import { ToastContainer, Zoom } from 'react-toastify';
+import { useTheme } from './context/ThemeContext.jsx'
 
 
 
 const App = () => {
+  const { theme } = useTheme()
+
   return (
-    <> <div className='min-h-screen bg-gray-950 text-white  w-full'>
+    <> <div className='min-h-screen bg-(--bg-app) text-(--text-main) w-full overflow-x-hidden theme-transition'>
       <Navbar />
 
       <Routes>
@@ -24,7 +27,7 @@ const App = () => {
         closeOnClick
         pauseOnHover
         draggable
-        theme="dark"
+        theme={theme === 'light' ? 'light' : 'dark'}
         transition={Zoom}
       />
     </div>

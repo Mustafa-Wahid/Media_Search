@@ -1,14 +1,132 @@
 @import "tailwindcss";
 
+* {
+  font-family: "helvetica neue", ui-sans-serif, system-ui, sans-serif;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
 #bottom {
   background: linear-gradient(transparent, black);
 }
-* {
-  font-family: "helvetica neue";
-}
+
+/* ---------------------------------------------------------------- */
+/* Theme tokens.                                                     */
+/* :root holds the dark theme (the app's original always-on look),   */
+/* so existing users see zero visual change until they toggle.       */
+/* .light overrides the same variables for the light theme.          */
+/* The purple brand vars (--c1..--c4) are reused/re-themed here      */
+/* instead of duplicated, so every component already using them      */
+/* (modals, dropdowns, navbar) is polished for free.                 */
+/* ---------------------------------------------------------------- */
 :root {
   --c1: rgb(12, 43, 78);
   --c2: rgb(26, 61, 100);
   --c3: rgb(29, 84, 100);
   --c4: rgb(244, 244, 244);
+
+  --accent: #6366f1;
+  --accent-hover: #4f46e5;
+
+  --bg-app: #030712;
+  --bg-panel: #0f172a;
+  --bg-input: rgba(255, 255, 255, 0.06);
+  --border-subtle: rgba(255, 255, 255, 0.12);
+  --text-main: #f8fafc;
+  --text-muted: #9ca3af;
+  --text-faint: #6b7280;
+
+  color-scheme: dark;
+}
+
+.light {
+  --c1: #ffffff;
+  --c2: #ede9fe;
+  --c3: #ddd6fe;
+  --c4: rgb(12, 43, 78);
+
+  --accent: #6366f1;
+  --accent-hover: #4338ca;
+
+  --bg-app: #faf9ff;
+  --bg-panel: #ffffff;
+  --bg-input: rgba(79, 70, 229, 0.07);
+  --border-subtle: rgba(79, 70, 229, 0.18);
+  --text-main: #1e1b2e;
+  --text-muted: #5b5670;
+  --text-faint: #8b87a0;
+
+  color-scheme: light;
+}
+
+/* Smooth theme switch — colors only, never layout properties, so
+   toggling dark/light never causes jank or a layout jump. */
+body,
+nav,
+header,
+input,
+select,
+textarea,
+button,
+.theme-transition {
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+/* used by MediaModal's backdrop-fade / scale-in open animation, and by
+   dropdown/menu/form-modal popovers across the app */
+@keyframes mm-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes mm-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* subtle shimmer for skeleton loading cards */
+@keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+.skeleton-shimmer {
+  background-color: var(--bg-input);
+  background-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(129, 140, 248, 0.22) 50%,
+    transparent 100%
+  );
+  background-size: 400px 100%;
+  background-repeat: no-repeat;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
