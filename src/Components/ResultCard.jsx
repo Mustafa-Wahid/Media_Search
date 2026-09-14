@@ -28,8 +28,6 @@ const ResultCard = ({ item, onPreview }) => {
   const isFavorited = collectionItems.some((c) => c.id === item.id);
   const isInCollection = (col) => col.mediaIds.includes(getMediaKey(item));
 
-  // Original single-click Save behavior, kept 100% intact for anyone with
-  // no named collections yet (i.e. everyone before this feature existed).
   const addToCollection = (item) => {
     dispatch(addCollection(item));
     dispatch(addedToast());
@@ -72,12 +70,10 @@ const ResultCard = ({ item, onPreview }) => {
 
   return (
     <div className='group relative w-full mb-5 break-inside-avoid rounded-2xl overflow-hidden bg-gray-200 shadow-sm transition-all duration-300 ease-out hover:shadow-xl hover:-translate-y-1'>
-      {/* skeleton placeholder shown until the media finishes loading, prevents layout jump */}
       {!loaded && (
         <div className='absolute inset-0 animate-pulse bg-gray-300 rounded-2xl' />
       )}
 
-      {/* clicking the media opens the in-app preview modal (Feature #2) */}
       <button
         type='button'
         onClick={onPreview}
@@ -114,10 +110,8 @@ const ResultCard = ({ item, onPreview }) => {
         ) : ''}
       </button>
 
-      {/* subtle hover overlay, purely visual, does not block clicks */}
       <div className='pointer-events-none absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/20 rounded-2xl' />
-
-      {/* view-original-on-source / download actions: always visible on touch devices, fade in on hover for desktop */}
+      
       <div className='absolute top-3 right-3 flex gap-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-200'>
         <a
           href={item.url}

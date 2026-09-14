@@ -3,7 +3,7 @@ import HomePage from './Pages/HomePage'
 import CollectionPage from './Pages/CollectionPage'
 import Navbar from './Components/Navbar'
 import { ToastContainer, Zoom } from 'react-toastify';
-import { useTheme } from './context/ThemeContext.jsx'
+import { useTheme } from './context/Themecontext'
 
 
 

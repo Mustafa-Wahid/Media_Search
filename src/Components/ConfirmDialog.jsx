@@ -1,10 +1,5 @@
 import { AlertTriangle } from 'lucide-react'
 
-/**
- * Small reusable yes/no confirmation dialog.
- * Kept generic (title/message/confirmLabel) so it isn't tied to any one
- * feature, in case it's reused elsewhere later.
- */
 const ConfirmDialog = ({
   title,
   message,

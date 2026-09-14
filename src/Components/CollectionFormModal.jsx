@@ -1,12 +1,7 @@
 import { useState } from 'react'
 import { X } from 'lucide-react'
 
-/**
- * Shared modal for both "Create Collection" and "Rename Collection".
- * mode: 'create' | 'rename'
- * existingNames: names of the user's OTHER collections, for duplicate checks
- *   (already lowercased + trimmed by the caller, current name excluded when renaming).
- */
+
 const CollectionFormModal = ({
   mode = 'create',
   initialName = '',

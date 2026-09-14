@@ -3,9 +3,6 @@ import { ImageOff } from 'lucide-react'
 import CollectionCard from './CollectionCard'
 import MediaModal from './MediaModal'
 
-// Same masonry column classes as ResultGrid's search results grid, so an
-// opened collection looks and behaves identically to the main search page
-// (Feature #6: "reuse the SAME Pinterest-style masonry grid").
 const MASONRY_CLASSES = 'columns-1 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-4 sm:gap-5 w-full'
 
 const SavedMediaGrid = ({ items, onRemove, emptyTitle = 'No media yet', emptySubtitle = 'Save something from a search to see it here.' }) => {

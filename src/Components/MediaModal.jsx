@@ -12,19 +12,12 @@ import {
 import SaveToCollectionMenu from './SaveToCollectionMenu'
 import CollectionFormModal from './CollectionFormModal'
 
-// which API each media type actually comes from, used only to label the source honestly
 const SOURCE_LABEL = {
   photo: 'Unsplash',
   Video: 'Pexels',
   GIF: 'GIPHY',
 }
 
-/**
- * Renders the actual image/gif/video for the modal, with its own skeleton
- * and error fallback. Kept as a separate component (mounted with key={item.id}
- * from the parent) so switching items via Prev/Next/related-media remounts it
- * and its loaded/error state resets naturally, with no effect needed.
- */
 const MediaFrame = ({ item }) => {
   const [loaded, setLoaded] = useState(false)
   const [error, setError] = useState(false)

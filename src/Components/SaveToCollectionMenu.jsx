@@ -1,15 +1,5 @@
 import { Check, Plus } from 'lucide-react'
 
-/**
- * "Save to..." checklist popover. Only ever rendered once the user has at
- * least one named collection (see ResultCard/MediaModal) - with zero
- * collections the plain single-click Save behavior is left completely
- * untouched, per the "don't break existing Save" requirement.
- *
- * Positioned via an absolutely-positioned wrapper supplied by the caller
- * (a `relative` container around the Save button); this component just
- * renders the panel + a transparent click-outside backdrop.
- */
 const SaveToCollectionMenu = ({
   collections,
   isFavorited,

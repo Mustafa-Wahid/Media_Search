@@ -9,11 +9,6 @@ const Thumb = ({ item }) => {
   return <img className='w-full h-full object-cover' src={item.thumbnail || item.src} alt='' loading='lazy' />
 }
 
-/**
- * One collection tile on the Collections dashboard.
- * `thumbnails` is a pre-computed array (0-4 items) of the collection's most
- * recent saved media, used to build the little preview collage.
- */
 const CollectionPreviewCard = ({
   name,
   count,

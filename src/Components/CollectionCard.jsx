@@ -1,12 +1,6 @@
 import { Download, Share2, Trash2 } from 'lucide-react'
 import { toast, Zoom } from 'react-toastify'
 
-/**
- * A single saved-media tile, used inside an opened collection (Favorites or
- * any user collection) — Feature #7: Preview / Remove / Download / Share.
- * Kept as its own component (not duplicated) and reused for every
- * collection's grid, per "reuse existing components instead of duplicating".
- */
 const CollectionCard = ({ item, onRemove, onPreview }) => {
 
   const handleShare = async (e) => {
@@ -24,7 +18,6 @@ const CollectionCard = ({ item, onRemove, onPreview }) => {
         })
       }
     } catch {
-      // share sheet dismissed or clipboard unavailable, nothing to do
     }
   }
 
